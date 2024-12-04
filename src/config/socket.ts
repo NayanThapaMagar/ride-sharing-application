@@ -12,10 +12,10 @@ interface AuthenticatedSocket extends Socket {
 const initializeSocket = (io: Server) => {
 
     io.use((socket: AuthenticatedSocket, next: (err?: Error) => void) => {
-        // const token = socket.handshake.auth.token;
+        const token = socket.handshake.auth.token;
 
         // only for weboscket demonstration
-        const token = socket.handshake.headers['authorization']?.split(' ')[1];
+        // const token = socket.handshake.headers['authorization']?.split(' ')[1];
 
         if (!token) {
             return next(new Error("Authentication error: Token is required"));
